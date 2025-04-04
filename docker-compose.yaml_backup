@@ -1,0 +1,117 @@
+services:
+  login:
+    build:
+      context: ./backend/backend_login
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=${APP_ENV}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LISTEN_PORT=${LISTEN_PORT}
+      - LISTEN_ADDR=${LISTEN_ADDR}
+      - SECRET_KEY=${SECRET_KEY}
+      - REFRESH_SECRET_KEY={REFRESH_SECRET_KEY}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - LDAP_URL=${LDAP_URL}
+      - LDAP_CA=${LDAP_CA}
+      - LDAP_BASEDN=${LDAP_BASEDN}
+      - LDAP_BINDDN=${LDAP_BINDDN}
+      - LDAP_BINDPASSWORD=${LDAP_BINDPASSWORD}
+      - LDAP_FILTER=${LDAP_FILTER}
+  login-dev:
+    build:
+      context: ./backend/backend_login
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=${APP_ENV}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LISTEN_PORT=${LISTEN_PORT}
+      - LISTEN_ADDR=${LISTEN_ADDR}
+      - SECRET_KEY=${SECRET_KEY}
+      - REFRESH_SECRET_KEY={REFRESH_SECRET_KEY}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - LDAP_URL=${LDAP_URL}
+      - LDAP_CA=${LDAP_CA}
+      - LDAP_BASEDN=${LDAP_BASEDN}
+      - LDAP_BINDDN=${LDAP_BINDDN}
+      - LDAP_BINDPASSWORD=${LDAP_BINDPASSWORD}
+      - LDAP_FILTER=${LDAP_FILTER}
+  users:
+    build:
+      context: ./backend/backend_u
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=${APP_ENV}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LISTEN_PORT=${LISTEN_PORT}
+      - LISTEN_ADDR=${LISTEN_ADDR}
+      - SECRET_KEY=${SECRET_KEY}
+      - REFRESH_SECRET_KEY={REFRESH_SECRET_KEY}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+  subjects:
+    build:
+      context: ./backend/backend_subject
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=${APP_ENV}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LISTEN_PORT=${LISTEN_PORT}
+      - LISTEN_ADDR=${LISTEN_ADDR}
+      - SECRET_KEY=${SECRET_KEY}
+      - REFRESH_SECRET_KEY={REFRESH_SECRET_KEY}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+  questions:
+    build:
+      context: ./backend/backend_question
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=${APP_ENV}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LISTEN_PORT=${LISTEN_PORT}
+      - LISTEN_ADDR=${LISTEN_ADDR}
+      - SECRET_KEY=${SECRET_KEY}
+      - REFRESH_SECRET_KEY={REFRESH_SECRET_KEY}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=generate
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+  core:
+    build:
+      context: ./backend/backend_core
+      dockerfile: Dockerfile
+    environment:
+      - APP_ENV=${APP_ENV}
+      - LOG_LEVEL=${LOG_LEVEL}
+      - LISTEN_PORT=${LISTEN_PORT}
+      - LISTEN_ADDR=${LISTEN_ADDR}
+      - SECRET_KEY=${SECRET_KEY}
+      - REFRESH_SECRET_KEY={REFRESH_SECRET_KEY}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+  proxy:
+    image: nginx:alpine
+    ports:
+       - 80:80
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - login
