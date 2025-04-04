@@ -1,0 +1,9 @@
+[submodule "backend/quiz_backend_login"]
+	path = backend/quiz_backend_login
+	url = https://github.com/proger567/quiz_backend_login.git
+[submodule "backend/quiz_backend_user"]
+	path = backend/quiz_backend_user
+	url = https://github.com/proger567/quiz_backend_user.git
+[submodule "backend/quiz_backend_core"]
+	path = backend/quiz_backend_core
+	url = https://github.com/proger567/quiz_backend_core.git
