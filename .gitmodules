@@ -7,3 +7,12 @@
 [submodule "backend/quiz_backend_core"]
 	path = backend/quiz_backend_core
 	url = https://github.com/proger567/quiz_backend_core.git
+[submodule "backend/quiz_backend_notifier"]
+	path = backend/quiz_backend_notifier
+	url = https://github.com/proger567/quiz_backend_notifier.git
+[submodule "backend/quiz_protos"]
+	path = backend/quiz_protos
+	url = https://github.com/proger567/quiz_protos.git
+[submodule "backend/quiz_backend_middleware"]
+	path = backend/quiz_backend_middleware
+	url = https://github.com/proger567/quiz_backend_middleware.git
